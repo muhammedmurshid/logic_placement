@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_placements,access_placements,model_logic_placement_form,base.group_user,1,1,1,1
+access_placements_coordinator,access_placements,model_logic_placement_form,placement_coordinator,1,1,1,1
+access_placements_base_coordinator,access_placements,model_logic_placement_form,logic_base.coordinator_logic_base,1,1,1,1
+access_placements_base_head,access_placements,model_logic_placement_form,logic_base.academic_head_logic_base,1,1,1,1
+access_placements_base_head,access_admin,model_logic_placement_form,logic_base.admin_logic_base,1,1,1,1

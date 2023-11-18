@@ -4,8 +4,9 @@
     'sequence': "0",
     'depends': ['base','mail', 'logic_base'],
     'data': [
-        # 'security/security.xml',
+        'security/group.xml',
         'security/ir.model.access.csv',
+        'security/rules.xml',
         'views/placements.xml',
         # 'views/account_payment_views.xml',
         # 'wizard/register_pay_wizard_views.xml',

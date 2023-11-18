@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="placements_coordinator_access_rule" model="ir.rule">
+            <field name="name">Placement Coordinator rule</field>
+            <field name="model_id" ref="model_logic_placement_form"/>
+            <field name="domain_force">['|',('create_uid.id','=', user.id), ('batch_id.academic_coordinator.id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('logic_base.coordinator_logic_base'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo>
