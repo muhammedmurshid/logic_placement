@@ -20,8 +20,14 @@
                             <field name="student_id" required="1"/>
                             <field name="batch_id"/>
                             <field name="course_id"/>
-                            <field name="download_photo"/>
-<!--                            <field name="updated_photo" widget="image" style="width:100px;"/>-->
+                            <label for="experience_duration"/>
+                            <div class="o_row">
+                                <field name="experience_duration"/>
+                                <field name="exp_period"/>
+                            </div>
+                            <field name="photo_bool" invisible="1"/>
+                            <field name="download_photo" attrs="{'invisible':['|',('state', '!=', 'done'), ('photo_bool', '=', False)]}"/>
+                            <!--                            <field name="updated_photo" widget="image" style="width:100px;"/>-->
 
                         </group>
                         <group>

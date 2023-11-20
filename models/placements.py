@@ -18,6 +18,10 @@ class PlacementsForm(models.Model):
                                   default=lambda self: self.env.user.company_id.currency_id)
     updated_photo = fields.Binary(string='Updated Photo')
     download_photo = fields.Binary(string='Download Photo', compute='_compute_download_photo', store=True)
+    experience_duration = fields.Float('Experience')
+    exp_period = fields.Selection([('year', 'Year'), ('month', 'Month'), ('day', 'Day')], string='Duration',
+                                  default='year')
+    photo_bool = fields.Boolean('photo')
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done')], string='State', default='draft', tracking=True)
 
     def _compute_display_name(self):
@@ -29,7 +33,10 @@ class PlacementsForm(models.Model):
     def _compute_download_photo(self):
         for record in self:
             if record.updated_photo:
+                record.photo_bool = True
                 record.download_photo = record.updated_photo
+            else:
+                record.photo_bool = False
 
     def action_done(self):
         student = self.env['logic.students'].browse(self.student_id.id)
