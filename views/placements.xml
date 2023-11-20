@@ -12,16 +12,22 @@
                     <button name="action_draft" string="Return to Draft" type="object" states="done"/>
                 </header>
                 <sheet>
+                    <field name="updated_photo" widget='image' class="oe_avatar"
+                           options='{"zoom": true, "preview_image":"updated_photo"}'/>
                     <group>
                         <group>
+                            <field name="currency_id" invisible="1"/>
                             <field name="student_id" required="1"/>
                             <field name="batch_id"/>
                             <field name="course_id"/>
-                            <field name="company_name"/>
+                            <field name="download_photo"/>
+<!--                            <field name="updated_photo" widget="image" style="width:100px;"/>-->
+
                         </group>
                         <group>
+                            <field name="company_name" required="1"/>
                             <field name="job_position"/>
-                            <field name="starting_salary"/>
+                            <field name="starting_salary" widget="monetary"/>
                             <field name="joining_date"/>
 
                         </group>

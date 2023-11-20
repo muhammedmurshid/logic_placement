@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+import base64
 
 
 class PlacementsForm(models.Model):
@@ -8,17 +9,27 @@ class PlacementsForm(models.Model):
 
     student_id = fields.Many2one('logic.students', string='Student Name')
     batch_id = fields.Many2one('logic.base.batch', string='Batch', related='student_id.batch_id')
-    course_id = fields.Many2one('logic.base.courses', string='Course')
+    course_id = fields.Many2one('logic.base.courses', string='Course', related='batch_id.course_id')
     company_name = fields.Char(string='Company Name')
     job_position = fields.Char(string='Job Position')
     starting_salary = fields.Float(string='Starting Salary')
     joining_date = fields.Date(string='Joining Date')
+    currency_id = fields.Many2one('res.currency', string='Currency',
+                                  default=lambda self: self.env.user.company_id.currency_id)
+    updated_photo = fields.Binary(string='Updated Photo')
+    download_photo = fields.Binary(string='Download Photo', compute='_compute_download_photo', store=True)
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done')], string='State', default='draft', tracking=True)
 
     def _compute_display_name(self):
         for record in self:
             if record.student_id:
                 record.display_name = record.student_id.name + '  ' + 'Placement Record'
+
+    @api.depends('updated_photo')
+    def _compute_download_photo(self):
+        for record in self:
+            if record.updated_photo:
+                record.download_photo = record.updated_photo
 
     def action_done(self):
         student = self.env['logic.students'].browse(self.student_id.id)
