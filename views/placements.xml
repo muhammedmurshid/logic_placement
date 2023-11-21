@@ -19,6 +19,7 @@
                             <field name="currency_id" invisible="1"/>
                             <field name="student_id" required="1"/>
                             <field name="batch_id"/>
+                            <field name="branch"/>
                             <field name="course_id"/>
                             <label for="experience_duration"/>
                             <div class="o_row">

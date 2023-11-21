@@ -17,6 +17,7 @@ class PlacementsForm(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda self: self.env.user.company_id.currency_id)
     updated_photo = fields.Binary(string='Updated Photo')
+    branch = fields.Many2one('logic.base.branches', related='batch_id.branch_id', string='Branch')
     download_photo = fields.Binary(string='Download Photo', compute='_compute_download_photo', store=True)
     experience_duration = fields.Float('Experience')
     exp_period = fields.Selection([('year', 'Year'), ('month', 'Month'), ('day', 'Day')], string='Duration',
