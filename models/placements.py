@@ -14,6 +14,7 @@ class PlacementsForm(models.Model):
     job_position = fields.Char(string='Job Position')
     starting_salary = fields.Float(string='Starting Salary')
     joining_date = fields.Date(string='Joining Date')
+    created_date = fields.Date(string='Added Date', default=fields.Date.today, readonly=1)
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda self: self.env.user.company_id.currency_id)
     updated_photo = fields.Binary(string='Updated Photo')

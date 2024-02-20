@@ -36,6 +36,7 @@
                             <field name="job_position"/>
                             <field name="starting_salary" widget="monetary"/>
                             <field name="joining_date"/>
+                            <field name="created_date"/>
 
                         </group>
                     </group>
@@ -56,6 +57,7 @@
                 <field name="student_id"/>
                 <field name="batch_id"/>
                 <field name="course_id"/>
+                <field name="created_date"/>
                 <field name="company_name"/>
                 <field name="state" widget="badge"/>
             </tree>
